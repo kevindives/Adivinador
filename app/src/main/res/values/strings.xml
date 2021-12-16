@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Adivinador</string>
+    <string name="como_jugar">Puedes adivinar dos números del 1 al 10?</string>
+    <string name="numero_uno">Escriba el primer número</string>
+    <string name="numero_dos">Escriba el segundo número</string>
+    <string name="botton_jugar">jugar</string>
+    <string name="score">PUNTAJE MAXIMO</string>
+    <string name="titulo">ADIVINADOR</string>
+    <string name="numeroIntentos">"Numero de intentos "</string>
+    <string name="puntajeMaximo">30</string>
+    <string name="hecho_by">hecho por kevin</string>
+</resources>
