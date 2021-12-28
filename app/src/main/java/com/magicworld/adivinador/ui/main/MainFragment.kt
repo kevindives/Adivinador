@@ -1,23 +1,19 @@
 package com.magicworld.adivinador.ui.main
 
-import android.icu.lang.UCharacter
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.magicworld.adivinador.databinding.MainFragmentBinding
 
 
 class MainFragment : Fragment() {
 
+
     private lateinit var mainBinding : MainFragmentBinding
-
-    companion object {
-        fun newInstance() = MainFragment()
-    }
-
     private lateinit var viewModel: MainViewModel
 
     override fun onCreateView(
@@ -34,7 +30,6 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
         with(mainBinding){
             buttonJugar.setOnClickListener {
                 if (numberOneEditText.text.toString() == "")
@@ -45,34 +40,37 @@ class MainFragment : Fragment() {
                     viewModel.jugar(
                         numberOneEditText.text.toString().toInt(),
                         numberTwoEditText.text.toString().toInt(),
-                        puntajeTextView.text.toString().toInt()
+                        scoreTextView.text.toString().toInt()
                     )
                 }
             }
+            rulesTextView.setOnClickListener{
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToRulesFragment())
+            }
         }
-        viewModel.onEstadoDone.observe(viewLifecycleOwner,{result ->
-            onEstadoDoneSubscribe(result)
+        viewModel.onConditionDone.observe(viewLifecycleOwner,{result ->
+            onConditionDoneSubscribe(result)
         })
-        viewModel.onNumIntentosDone.observe(viewLifecycleOwner,{result->
-            onNumIntentosDoneSubscribe(result)
+        viewModel.onNumAttemptsDone.observe(viewLifecycleOwner,{result->
+            onNumAttemptsDoneSubscribe(result)
         })
 
-        viewModel.onPuntajeMaxDone.observe(viewLifecycleOwner,{result->
-            onPuntajeMaxDoneSubscribe(result)
+        viewModel.onScoreMaxDone.observe(viewLifecycleOwner,{result->
+            onScoreMaxDoneSubscribe(result)
         })
 
     }
 
-    private fun onNumIntentosDoneSubscribe(result: Int) {
-        mainBinding.intentosTextView.text = result.toString()
+    private fun onNumAttemptsDoneSubscribe(result: Int) {
+        mainBinding.attemptsTextView.text = result.toString()
     }
 
-    private fun onPuntajeMaxDoneSubscribe(result: Int) {
-        mainBinding.puntajeTextView.text = result.toString()
+    private fun onScoreMaxDoneSubscribe(result: Int) {
+        mainBinding.scoreTextView.text = result.toString()
     }
 
-    private fun onEstadoDoneSubscribe(result: String?) {
-        mainBinding.estadoJuego.text = result
+    private fun onConditionDoneSubscribe(result: String?) {
+        mainBinding.conditionGameTextView.text = result
     }
 
 }

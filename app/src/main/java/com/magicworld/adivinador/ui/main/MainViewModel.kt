@@ -1,6 +1,5 @@
 package com.magicworld.adivinador.ui.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,47 +7,45 @@ import androidx.lifecycle.ViewModel
 class MainViewModel : ViewModel() {
 
 
-    private val numIntentos: MutableLiveData<Int> = MutableLiveData()
-    val onNumIntentosDone: LiveData<Int> = numIntentos
+    private val numAttempts: MutableLiveData<Int> = MutableLiveData()
+    val onNumAttemptsDone: LiveData<Int> = numAttempts
 
-    private val estado: MutableLiveData<String> = MutableLiveData()
-    val onEstadoDone: LiveData<String> = estado
+    private val condition: MutableLiveData<String> = MutableLiveData()
+    val onConditionDone: LiveData<String> = condition
 
-    private val puntajeMax: MutableLiveData<Int> = MutableLiveData()
-    val onPuntajeMaxDone: LiveData<Int> = puntajeMax
+    private val scoreMax: MutableLiveData<Int> = MutableLiveData()
+    val onScoreMaxDone: LiveData<Int> = scoreMax
 
-    var nUnoAleatorio = (1..10).random()
-    var nDOSAleatorio = (1..10).random()
-    var intentos = 0
+    var nOneRamdon = (1..10).random()
+    var nTwoRamdon = (1..10).random()
+    var Attempts = 0
 
     fun jugar(
-        numeroUno: Int,
-        numberDos: Int,
-        puntaje: Int
+        numberOne: Int,
+        numberTwo: Int,
+        score: Int
     ) {
-        Log.d("valor", nUnoAleatorio.toString())
-        Log.d("valor", nDOSAleatorio.toString())
-        numIntentos.value = intentos + 1
-        intentos += 1
+        numAttempts.value = Attempts  + 1
+        Attempts  += 1
 
-        if ((numeroUno == nUnoAleatorio && numberDos == nDOSAleatorio) || (numeroUno == nDOSAleatorio && numberDos == nUnoAleatorio)) {
+        if ((numberOne == nOneRamdon && numberTwo == nTwoRamdon) || (numberOne == nTwoRamdon && numberTwo == nOneRamdon)) {
 
-            if (puntaje > intentos) {
-                puntajeMax.value = intentos
+            if (score > Attempts ) {
+                scoreMax.value = Attempts
             }
-            estado.value = "GANASTE LO HAS LOGRADO"
-            nUnoAleatorio = (1..10).random()
-            nDOSAleatorio = (1..10).random()
-            numIntentos.value = 0
-            intentos = 0
+            condition.value = "GANASTE LO HAS LOGRADO"
+            nOneRamdon = (1..10).random()
+            nTwoRamdon = (1..10).random()
+            numAttempts.value = 0
+            Attempts = 0
 
-        } else if(numeroUno == nUnoAleatorio || numeroUno == nDOSAleatorio){
-            estado.value = "Estuvo cerca"
+        } else if(numberOne == nOneRamdon || numberOne == nTwoRamdon){
+            condition.value = "Estuvo cerca"
         }
-        else if (numberDos == nUnoAleatorio || numberDos == nDOSAleatorio) {
-            estado.value = "Sigue intentando"
+        else if (numberTwo == nOneRamdon || numberTwo == nTwoRamdon) {
+            condition.value = "Sigue intentando"
         } else {
-            estado.value = " Fallaste"
+            condition.value = " Fallaste"
         }
 
     }
