@@ -1,15 +1,22 @@
 <resources>
     <string name="app_name">Adivinador</string>
-    <string name="como_jugar">Puedes adivinar dos números del 1 al 10?</string>
+    <string name="como_jugar">Adivina dos números del 1 al 10</string>
     <string name="numero_uno">Escriba el primer número</string>
     <string name="numero_dos">Escriba el segundo número</string>
     <string name="botton_jugar">jugar</string>
     <string name="score">PUNTAJE MAXIMO</string>
     <string name="titulo">ADIVINADOR</string>
-    <string name="numeroIntentos">"Numero de intentos "</string>
+    <string name="numeroIntentos">Número de intentos</string>
     <string name="puntajeMaximo">30</string>
     <string name="hecho_by">hecho por kevin</string>
     <string name="reglas"><u>como jugar</u></string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="rules">Reglas</string>
+    <string name="regla_uno">-El juego consiste en adivinar dos números aleatorios del 1 al 10</string>
+    <string name="regla_dos">-Deberas escribir dos números y darle jugar, los números pueden ser repetidos</string>
+    <string name="regla_tres">-Si fallas el juego cambiara los dos números</string>
+    <string name="regla_cuatro">-Si adivinas un número el juego te mostrara un mensaje diferente</string>
+    <string name="regla_cinco">-El número que adivinaste no cambiara, pero ten cuidado el juego no te dire el número que adivinaste</string>
+    <string name="regla_tip">-RECUERDA los números no cambiaran siempre cuando los adivines, debes estar muy atento a los mensajes, solo falta hacerlo en el menor número de intentos posible</string>
 </resources>
